@@ -2,7 +2,6 @@ const env = process.env.APP_ENV || 'development';
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 4000;
 
-const pageTitle = 'Fillet.JS';
 const cookieName = 'app';
 
 const config: TargetEnvConfig = {
@@ -26,7 +25,6 @@ const config: TargetEnvConfig = {
 export default {
   ...config[env],
   env,
-  pageTitle,
   cookieName,
   port,
 } as AppConfig;

@@ -7,7 +7,6 @@ declare global {
   }
 
   interface AppConfig extends EnvConfig {
-    pageTitle: string;
     env: string;
     cookieName: string;
     port: number;

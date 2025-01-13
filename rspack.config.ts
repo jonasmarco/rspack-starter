@@ -66,15 +66,13 @@ export default defineConfig({
           {
             loader: 'sass-loader',
             options: {
-              // using `modern-compiler` and `sass-embedded` together significantly improve build performance,
-              // requires `sass-loader >= 14.2.1`
               api: 'modern-compiler',
               implementation: require.resolve('sass-embedded'),
+              additionalData: '@use "./src/stylesheets/includes/index" as *;',
             },
           },
         ],
-        // set to 'css/auto' if you want to support '*.module.(scss|sass)' as CSS Modules, otherwise set type to 'css'
-        type: 'css/auto',
+        type: 'css',
       },
     ],
   },

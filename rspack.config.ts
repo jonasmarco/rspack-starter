@@ -2,7 +2,7 @@ import { defineConfig } from '@rspack/cli';
 import { rspack } from '@rspack/core';
 import * as RefreshPlugin from '@rspack/plugin-react-refresh';
 
-import path from 'path';
+import * as path from 'path';
 
 const isDev = process.env.NODE_ENV === 'development';
 

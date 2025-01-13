@@ -1,10 +1,22 @@
 import { defineConfig } from '@rspack/cli';
-import { rspack } from '@rspack/core';
+import { HtmlRspackPluginOptions, rspack } from '@rspack/core';
 import * as RefreshPlugin from '@rspack/plugin-react-refresh';
 
 import * as path from 'path';
 
 const isDev = process.env.NODE_ENV === 'development';
+
+const config: HtmlRspackPluginOptions = {
+  template: './index.html',
+  filename: 'index.html',
+  title: 'Fillet.JS',
+  favicon: 'fillet.svg',
+  scriptLoading: 'defer',
+  inject: true,
+  hash: true,
+  minify: true,
+  sri: 'sha384',
+};
 
 // Target browsers, see: https://github.com/browserslist/browserslist
 const targets = ['chrome >= 87', 'edge >= 88', 'firefox >= 78', 'safari >= 14'];
@@ -21,7 +33,7 @@ export default defineConfig({
   module: {
     rules: [
       {
-        test: /\.svg$/,
+        test: /\.(png?|jpg?|gif?|svg?)$/,
         type: 'asset',
       },
       {
@@ -67,9 +79,7 @@ export default defineConfig({
     ],
   },
   plugins: [
-    new rspack.HtmlRspackPlugin({
-      template: './index.html',
-    }),
+    new rspack.HtmlRspackPlugin(config),
     isDev ? new RefreshPlugin() : null,
   ].filter(Boolean),
   optimization: {

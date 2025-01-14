@@ -1,8 +1,14 @@
 import { defineConfig } from '@rspack/cli';
-import { HtmlRspackPluginOptions, rspack } from '@rspack/core';
+import {
+  DefinePlugin,
+  HtmlRspackPluginOptions,
+  rspack,
+} from '@rspack/core';
 import * as RefreshPlugin from '@rspack/plugin-react-refresh';
 
 import * as path from 'path';
+
+import appConfig from './src/config/App';
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -16,6 +22,12 @@ const config: HtmlRspackPluginOptions = {
   hash: true,
   minify: true,
   sri: 'sha384',
+};
+
+const defines: Record<string, string> = {
+  'process.env.APP_ENV': JSON.stringify(process.env.APP_ENV || 'development'),
+  'process.env.HOST': JSON.stringify(process.env.HOST || 'localhost'),
+  'process.env.PORT': JSON.stringify(process.env.PORT || 4000),
 };
 
 // Target browsers, see: https://github.com/browserslist/browserslist
@@ -32,10 +44,15 @@ export default defineConfig({
   },
   module: {
     rules: [
+      // images
       {
-        test: /\.(png?|jpg?|gif?|svg?)$/,
-        type: 'asset',
+        test: /\.(jpe?g|png|gif|svg|webp)/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/images/[name]-[hash][ext]',
+        },
       },
+      // jsx, tsx
       {
         test: /\.(jsx?|tsx?)$/,
         use: [
@@ -60,6 +77,7 @@ export default defineConfig({
           },
         ],
       },
+      // styles
       {
         test: /\.(sass|scss)$/,
         use: [
@@ -69,16 +87,34 @@ export default defineConfig({
               api: 'modern-compiler',
               implementation: require.resolve('sass-embedded'),
               additionalData: '@use "./src/stylesheets/includes/index" as *;',
+              sourceMap: isDev,
             },
           },
         ],
         type: 'css',
+      },
+      // videos
+      {
+        test: /\.(mp4|webm)(\?v=\d+\.\d+\.\d+)?$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/video/[name]-[hash][ext]',
+        },
+      },
+      // fonts
+      {
+        test: /(\.woff|\.woff2|\.svg|.eot|\.ttf)(\?v=\d+\.\d+\.\d+)?$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/fonts/[name]-[hash][ext]',
+        },
       },
     ],
   },
   plugins: [
     new rspack.HtmlRspackPlugin(config),
     isDev ? new RefreshPlugin() : null,
+    new DefinePlugin(defines),
   ].filter(Boolean),
   optimization: {
     minimizer: [
@@ -88,7 +124,25 @@ export default defineConfig({
       }),
     ],
   },
+  devServer: {
+    compress: true,
+    historyApiFallback: {
+      index: appConfig.path,
+    },
+    host: process.env.HOST,
+    hot: true,
+    open: true,
+    port: appConfig.port,
+    static: path.join(process.cwd(), 'public'),
+  },
+  output: {
+    filename: 'assets/bundle-[name]-[chunkhash].js',
+    chunkFilename: 'assets/bundle-[name]-[chunkhash].js',
+    assetModuleFilename: 'assets/[name]-[hash][ext]',
+    publicPath: `${appConfig.baseUrl}${appConfig.path}`,
+  },
   experiments: {
     css: true,
   },
+  target: 'web',
 });

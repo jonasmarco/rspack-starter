@@ -24,7 +24,7 @@
       "@app/*": ["./src/*"]
     }
   },
-  "include": ["src", "types/global.d.ts"],
+  "include": ["src", "src/types/global.d.ts"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"

@@ -30,6 +30,7 @@ const config: TargetEnvConfig = {
 export default {
   ...config[env],
   env,
-  cookieName,
+  host,
   port,
+  cookieName,
 } as AppConfig;

@@ -44,14 +44,6 @@ export default defineConfig({
   },
   module: {
     rules: [
-      // images
-      {
-        test: /\.(jpe?g|png|gif|svg|webp)/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'assets/images/[name]-[hash][ext]',
-        },
-      },
       // jsx, tsx
       {
         test: /\.(jsx?|tsx?)$/,
@@ -93,6 +85,14 @@ export default defineConfig({
         ],
         type: 'css',
       },
+      // images
+      {
+        test: /\.(jpe?g|png|gif|svg|webp)/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/images/[name]-[hash][ext]',
+        },
+      },
       // videos
       {
         test: /\.(mp4|webm)(\?v=\d+\.\d+\.\d+)?$/,
@@ -129,17 +129,10 @@ export default defineConfig({
     historyApiFallback: {
       index: appConfig.path,
     },
-    host: process.env.HOST,
+    port: appConfig.port,
     hot: true,
     open: true,
-    port: appConfig.port,
     static: path.join(process.cwd(), 'public'),
-  },
-  output: {
-    filename: 'assets/bundle-[name]-[chunkhash].js',
-    chunkFilename: 'assets/bundle-[name]-[chunkhash].js',
-    assetModuleFilename: 'assets/[name]-[hash][ext]',
-    publicPath: `${appConfig.baseUrl}${appConfig.path}`,
   },
   experiments: {
     css: true,

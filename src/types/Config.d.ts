@@ -6,10 +6,10 @@ export interface EnvConfig {
 }
 
 export interface AppConfig extends EnvConfig {
-  pageTitle: string;
   env: string;
-  cookieName: string;
+  host: string;
   port: number;
+  cookieName: string;
 }
 
 export interface TargetEnvConfig {

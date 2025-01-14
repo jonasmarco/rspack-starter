@@ -89,25 +89,16 @@ export default defineConfig({
       {
         test: /\.(jpe?g|png|gif|svg|webp)/i,
         type: 'asset/resource',
-        generator: {
-          filename: 'assets/images/[name]-[hash][ext]',
-        },
       },
       // videos
       {
         test: /\.(mp4|webm)(\?v=\d+\.\d+\.\d+)?$/,
         type: 'asset/resource',
-        generator: {
-          filename: 'assets/video/[name]-[hash][ext]',
-        },
       },
       // fonts
       {
         test: /(\.woff|\.woff2|\.svg|.eot|\.ttf)(\?v=\d+\.\d+\.\d+)?$/,
         type: 'asset/resource',
-        generator: {
-          filename: 'assets/fonts/[name]-[hash][ext]',
-        },
       },
     ],
   },

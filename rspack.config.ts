@@ -20,7 +20,7 @@ const config: HtmlRspackPluginOptions = {
   scriptLoading: 'defer',
   inject: true,
   hash: true,
-  minify: true,
+  minify: isDev,
   sri: 'sha384',
 };
 
@@ -125,8 +125,14 @@ export default defineConfig({
     open: true,
     static: path.join(process.cwd(), 'public'),
   },
+  mode: isDev ? 'development' : 'production',
+  devtool: isDev ? 'inline-source-map' : 'source-map',
   experiments: {
     css: true,
+  },
+  output: {
+    path: path.resolve(__dirname, `dist/${isDev ? 'uat' : 'production'}`),
+    filename: '[name].[contenthash].js',
   },
   target: 'web',
 });

@@ -8,7 +8,8 @@
     "dev": "cross-env NODE_ENV=development rspack serve --mode development",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "preview": "yarn build && serve dist"
+    "preview": "yarn build && serve dist/production",
+    "preview:uat": "yarn build:uat && serve dist/uat"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",

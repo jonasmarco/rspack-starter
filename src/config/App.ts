@@ -16,8 +16,8 @@ const config: TargetEnvConfig = {
     endpoint: '',
   },
   uat: {
-    path: '/',
-    baseUrl: '',
+    path: '/front/rspack/',
+    baseUrl: 'https://opensource.do.fillet.dev',
     endpoint: '',
   },
   production: {

@@ -1,0 +1,13 @@
+.git
+.gitignore
+node_modules/
+.DS_Store
+yarn-error.log
+core
+tmp
+dist
+build
+.env
+.env.test
+.env.development
+.vscode

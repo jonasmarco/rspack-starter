@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opensource-rspack
+  namespace: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: opensource-rspack
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: opensource-rspack
+    spec:
+      containers:
+        - name: opensource-rspack
+          image: registry.digitalocean.com/fillet-dev/opensource-rspack
+          ports:
+            - name: http
+              containerPort: 80

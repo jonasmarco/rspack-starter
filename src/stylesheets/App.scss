@@ -1,6 +1,7 @@
+@use 'sass:meta';
 @import 'reset-css/reset.css';
 @import 'react-toastify/dist/ReactToastify.css';
-@import './fonts';
+@include meta.load-css('fonts');
 
 * {
   outline: none;

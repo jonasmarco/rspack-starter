@@ -7,9 +7,7 @@
     "build": "cross-env NODE_ENV=production APP_ENV=production rspack build --mode production",
     "build:uat": "cross-env NODE_ENV=production APP_ENV=uat rspack build --mode production",
     "format": "prettier --write .",
-    "lint": "eslint .",
-    "preview": "yarn build && serve dist/production",
-    "preview:uat": "yarn build:uat && serve dist/uat"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.1",

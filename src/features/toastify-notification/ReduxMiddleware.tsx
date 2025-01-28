@@ -1,19 +1,25 @@
 import axios, { AxiosError } from 'axios';
-import React from 'react';
-import { toast, ToastOptions, TypeOptions } from 'react-toastify';
+import {
+  toast,
+  ToastOptions,
+  TypeOptions,
+} from 'react-toastify';
 import { Middleware } from 'redux';
 
-import { ActionNotifiable, ServiceErrorResponse } from './Types';
+import {
+  ActionNotifiable,
+  ServiceErrorResponse,
+} from './Types';
 
 const notifyIt = (action: ActionNotifiable): void => {
-  const { type, payload } = action;
+  const {type, payload} = action;
   const regexActionType = type.match(/(_|\/)(ERROR|SUCCESS|INFO|WARNING)$/i);
   if (regexActionType) {
     let content: Array<string> = payload.messages || [];
     const actionType: TypeOptions = regexActionType[0]
       .replace(/\W/, '')
       .toLowerCase() as TypeOptions;
-    const options: ToastOptions<{}> = {
+    const options: ToastOptions<object> = {
       type: actionType,
       theme: 'dark',
     };
@@ -23,7 +29,8 @@ const notifyIt = (action: ActionNotifiable): void => {
     if (payload) {
       if (axios.isAxiosError(payload)) {
         const axiosError: AxiosError = payload;
-        const data: ServiceErrorResponse = axiosError.response?.data as ServiceErrorResponse;
+        const data: ServiceErrorResponse = axiosError.response
+          ?.data as ServiceErrorResponse;
 
         if (data) {
           content = [...content, ...data.messages];
@@ -40,11 +47,11 @@ const notifyIt = (action: ActionNotifiable): void => {
 
     const messagesAsHtml: string = content.join('<br />');
 
-    toast(<div dangerouslySetInnerHTML={{ __html: messagesAsHtml }} />, options);
+    toast(<div dangerouslySetInnerHTML={{__html: messagesAsHtml}} />, options);
   }
 };
 
-const notificationMiddleware: Middleware = (storeApi) => (next) => (action) => {
+const notificationMiddleware: Middleware = () => next => action => {
   notifyIt(action as ActionNotifiable);
   return next(action);
 };

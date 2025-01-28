@@ -57,7 +57,12 @@ export const rules = [
   },
   // fonts
   {
-    test: /(\.woff|\.woff2|\.svg|.eot|\.ttf)(\?v=\d+\.\d+\.\d+)?$/,
+    test: /(\.woff|\.woff2|\.eot|\.ttf)(\?v=\d+\.\d+\.\d+)?$/,
+    type: 'asset/resource',
+  },
+  // other assets
+  {
+    test: /\.(pdf|xml|csv|docx?)$/i,
     type: 'asset/resource',
   },
 ];

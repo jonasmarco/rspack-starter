@@ -21,10 +21,11 @@
       "@utils/*": ["./src/utils/*"],
       "@views/*": ["./src/views/*"],
       "@stylesheets/*": ["./src/stylesheets/*"],
+      "@assets/*": ["./src/assets/*"],
       "@app/*": ["./src/*"]
     }
   },
-  "include": ["src", "src/types/global.d.ts"],
+  "include": ["src", "src/types"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"

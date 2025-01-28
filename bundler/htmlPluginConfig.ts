@@ -1,6 +1,6 @@
 import { HtmlRspackPluginOptions } from '@rspack/core';
 
-import { isDev } from './constants';
+import appConfig from '../src/config/App';
 
 const htmlPluginConfig: HtmlRspackPluginOptions = {
   template: './index.html',
@@ -10,7 +10,7 @@ const htmlPluginConfig: HtmlRspackPluginOptions = {
   scriptLoading: 'defer',
   inject: true,
   hash: true,
-  minify: isDev,
+  minify: appConfig.env === 'production',
   sri: 'sha384',
 };
 

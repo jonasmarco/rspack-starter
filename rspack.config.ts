@@ -1,19 +1,17 @@
-import { defineConfig } from '@rspack/cli';
+import {defineConfig} from '@rspack/cli';
 
 import * as path from 'path';
 
-import { isDev } from './bundler/constants';
-import { devServer } from './bundler/devServer';
-import { optimization } from './bundler/optimization';
-import { output } from './bundler/output';
+import {isDev} from './bundler/constants';
+import {devServer} from './bundler/devServer';
+import {optimization} from './bundler/optimization';
+import {buildType, entry, output, outputLib} from './bundler/output';
 import plugins from './bundler/plugins';
-import { rules } from './bundler/rules';
+import {rules} from './bundler/rules';
 
 export default defineConfig({
   context: __dirname,
-  entry: {
-    main: './src/main.tsx',
-  },
+  entry,
   resolve: {
     extensions: ['...', '.ts', '.tsx', '.jsx'],
     tsConfig: path.resolve(__dirname, './tsconfig.json'),
@@ -23,12 +21,12 @@ export default defineConfig({
   },
   plugins,
   optimization,
-  devServer,
+  devServer: buildType === 'web' ? devServer : undefined,
   mode: isDev ? 'development' : 'production',
   devtool: isDev ? 'inline-source-map' : 'source-map',
   experiments: {
     css: true,
   },
-  output,
+  output: buildType === 'web' ? output : outputLib,
   target: 'web',
 });

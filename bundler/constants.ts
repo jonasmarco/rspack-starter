@@ -4,6 +4,7 @@ export const defines: Record<string, string> = {
   'process.env.APP_ENV': JSON.stringify(process.env.APP_ENV || 'development'),
   'process.env.HOST': JSON.stringify(process.env.HOST || 'localhost'),
   'process.env.PORT': JSON.stringify(process.env.PORT || 4000),
+  'process.env.BUILD_TYPE': JSON.stringify(process.env.BUILD_TYPE || 'web'),
 };
 
 // Target browsers, veja: https://github.com/browserslist/browserslist

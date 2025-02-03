@@ -2,20 +2,17 @@ import '@stylesheets/App.scss';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 
 import Routes from '@config/Routes';
 
-import { WindowSize } from '@features/layout/Types';
+import {WindowSize} from '@features/layout/Types';
 
-import {
-  changeScrollTop,
-  changeWindowSize,
-} from '@features/layout';
+import {changeScrollTop, changeWindowSize} from '@features/layout';
 
-import { store } from '@app/config/Redux';
+import {store} from '@app/config/Redux';
 
-const App = () => (
+export const App = () => (
   <Provider store={store}>
     <Routes />
   </Provider>

@@ -5,9 +5,10 @@ import {codeInspectorPlugin} from 'code-inspector-plugin';
 
 import {defines, isDev} from './constants';
 import htmlPluginConfig from './htmlPluginConfig';
+import {buildType} from './output';
 
 const plugins = [
-  new rspack.HtmlRspackPlugin(htmlPluginConfig),
+  buildType === 'web' ? new rspack.HtmlRspackPlugin(htmlPluginConfig) : null,
   isDev ? new RefreshPlugin() : null,
   new DefinePlugin(defines),
   codeInspectorPlugin({

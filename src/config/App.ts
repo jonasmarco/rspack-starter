@@ -1,11 +1,9 @@
-import {
-  AppConfig,
-  TargetEnvConfig,
-} from '@app/types/Config';
+import {AppConfig, TargetEnvConfig} from '@app/types/Config';
 
 const env = process.env.APP_ENV || 'development';
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 4000;
+const type = process.env.BUILD_TYPE || 'web';
 
 const cookieName = 'app';
 
@@ -32,5 +30,6 @@ export default {
   env,
   host,
   port,
+  type,
   cookieName,
 } as AppConfig;

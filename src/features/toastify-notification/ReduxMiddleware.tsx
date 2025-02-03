@@ -1,15 +1,8 @@
-import axios, { AxiosError } from 'axios';
-import {
-  toast,
-  ToastOptions,
-  TypeOptions,
-} from 'react-toastify';
-import { Middleware } from 'redux';
+import axios, {AxiosError} from 'axios';
+import {toast, ToastOptions, TypeOptions} from 'react-toastify';
+import {Middleware} from 'redux';
 
-import {
-  ActionNotifiable,
-  ServiceErrorResponse,
-} from './Types';
+import {ActionNotifiable, ServiceErrorResponse} from './Types';
 
 const notifyIt = (action: ActionNotifiable): void => {
   const {type, payload} = action;
@@ -22,6 +15,7 @@ const notifyIt = (action: ActionNotifiable): void => {
     const options: ToastOptions<object> = {
       type: actionType,
       theme: 'dark',
+      ariaLabel: 'Notification',
     };
 
     if (payload.message) content.push(payload.message);

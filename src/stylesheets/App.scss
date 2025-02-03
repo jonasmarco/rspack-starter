@@ -1,6 +1,5 @@
 @use 'sass:meta';
 @import 'reset-css/reset.css';
-@import 'react-toastify/dist/ReactToastify.css';
 @include meta.load-css('fonts');
 
 * {

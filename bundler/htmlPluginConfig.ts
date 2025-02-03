@@ -1,4 +1,4 @@
-import { HtmlRspackPluginOptions } from '@rspack/core';
+import {HtmlRspackPluginOptions} from '@rspack/core';
 
 import appConfig from '../src/config/App';
 
@@ -11,7 +11,6 @@ const htmlPluginConfig: HtmlRspackPluginOptions = {
   inject: true,
   hash: true,
   minify: appConfig.env === 'production',
-  sri: 'sha384',
 };
 
 export default htmlPluginConfig;

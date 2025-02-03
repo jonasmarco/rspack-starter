@@ -6,7 +6,7 @@ const htmlPluginConfig: HtmlRspackPluginOptions = {
   template: './index.html',
   filename: 'index.html',
   title: 'Fillet.JS',
-  favicon: 'fillet.svg',
+  favicon: 'favicon.svg',
   scriptLoading: 'defer',
   inject: true,
   hash: true,

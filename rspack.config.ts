@@ -1,13 +1,20 @@
-import {defineConfig} from '@rspack/cli';
+import { defineConfig } from '@rspack/cli';
 
 import * as path from 'path';
 
-import {isDev} from './bundler/constants';
-import {devServer} from './bundler/devServer';
-import {optimization} from './bundler/optimization';
-import {buildType, entry, output, outputLib} from './bundler/output';
+import { isDev } from './bundler/constants';
+import { devServer } from './bundler/devServer';
+import { optimization } from './bundler/optimization';
+import {
+  buildType,
+  entry,
+  output,
+  outputLib,
+} from './bundler/output';
 import plugins from './bundler/plugins';
-import {rules} from './bundler/rules';
+import { rules } from './bundler/rules';
+
+const isWeb = buildType === 'web';
 
 export default defineConfig({
   context: __dirname,
@@ -20,13 +27,15 @@ export default defineConfig({
     rules,
   },
   plugins,
-  optimization,
-  devServer: buildType === 'web' ? devServer : undefined,
+  optimization: isWeb
+    ? optimization
+    : {...optimization, splitChunks: false, runtimeChunk: false},
+  devServer: isWeb ? devServer : undefined,
   mode: isDev ? 'development' : 'production',
-  devtool: isDev ? 'inline-source-map' : 'source-map',
+  devtool: isWeb ? (isDev ? 'inline-source-map' : 'source-map') : false,
   experiments: {
-    css: true,
+    css: isWeb,
   },
-  output: buildType === 'web' ? output : outputLib,
+  output: isWeb ? output : outputLib,
   target: 'web',
 });

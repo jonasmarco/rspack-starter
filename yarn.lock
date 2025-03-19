@@ -277,11 +277,6 @@
     redux-thunk "^3.1.0"
     reselect "^5.1.0"
 
-"@rsbuild/plugin-umd@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@rsbuild/plugin-umd/-/plugin-umd-1.0.4.tgz#07d3fb52480831a33a27d9f5157692d272c06712"
-  integrity sha512-t+GeIPKELh5mGBNtnuGYyZ0QHR4QTyKeC3dJGPFRWWyH7L0xigFcu2j3SXVq6H4XSGF7oR85pGafi/7hc6QMQA==
-
 "@rspack/binding-darwin-arm64@1.2.7":
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/@rspack/binding-darwin-arm64/-/binding-darwin-arm64-1.2.7.tgz#83b3a9659175c67c8b5e802e11efefda982693a8"
@@ -991,10 +986,10 @@ available-typed-arrays@^1.0.7:
   dependencies:
     possible-typed-array-names "^1.0.0"
 
-axios@^1.8.1:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.8.1.tgz#7c118d2146e9ebac512b7d1128771cdd738d11e3"
-  integrity sha512-NN+fvwH/kV01dYUQ3PTOZns4LWtWhOFCAhQ/pHb88WQ1hNe5V/dvFwc4VJcDL11LT9xSX0QtsR8sWUuyOuOq7g==
+axios@^1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.8.2.tgz#fabe06e241dfe83071d4edfbcaa7b1c3a40f7979"
+  integrity sha512-ls4GYBm5aig9vWx8AWDSGLpnpDQRtWAfrjU+EuytuODrFBkqesN2RkOQCBzrA1RQNHw1SmRMSDDDSwzNAYQ6Rg==
   dependencies:
     follow-redirects "^1.15.6"
     form-data "^4.0.0"

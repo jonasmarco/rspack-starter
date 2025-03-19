@@ -10,6 +10,7 @@ export interface AppConfig extends EnvConfig {
   host: string;
   port: number;
   type: string;
+  node: string;
   cookieName: string;
 }
 

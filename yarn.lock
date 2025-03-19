@@ -277,6 +277,11 @@
     redux-thunk "^3.1.0"
     reselect "^5.1.0"
 
+"@rsbuild/plugin-umd@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@rsbuild/plugin-umd/-/plugin-umd-1.0.4.tgz#07d3fb52480831a33a27d9f5157692d272c06712"
+  integrity sha512-t+GeIPKELh5mGBNtnuGYyZ0QHR4QTyKeC3dJGPFRWWyH7L0xigFcu2j3SXVq6H4XSGF7oR85pGafi/7hc6QMQA==
+
 "@rspack/binding-darwin-arm64@1.2.7":
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/@rspack/binding-darwin-arm64/-/binding-darwin-arm64-1.2.7.tgz#83b3a9659175c67c8b5e802e11efefda982693a8"

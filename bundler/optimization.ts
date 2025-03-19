@@ -1,8 +1,8 @@
-import { rspack } from '@rspack/core';
+import {rspack} from '@rspack/core';
 
-import { targets } from './constants';
+import {targets} from './constants';
 
-export const optimization = {
+export const webOptimization = {
   minimizer: [
     new rspack.SwcJsMinimizerRspackPlugin(),
     new rspack.LightningCssMinimizerRspackPlugin({

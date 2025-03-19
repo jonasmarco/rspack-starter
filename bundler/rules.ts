@@ -1,10 +1,4 @@
-import {
-  isDev,
-  targets,
-} from './constants';
-import { buildType } from './output';
-
-const isWeb = buildType === 'web';
+import {isDev, isWeb, targets} from './constants';
 
 export const rules = [
   // jsx, tsx

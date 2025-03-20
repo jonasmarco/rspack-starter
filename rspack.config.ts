@@ -24,9 +24,10 @@ export default defineConfig({
   devServer: isWeb ? devServer : undefined,
   mode: isDev ? 'development' : 'production',
   devtool: isWeb ? (isDev ? 'inline-source-map' : 'source-map') : false,
+  output: isWeb ? output : outputLib,
+  target: 'web',
+  externalsType: isWeb ? 'var' : 'umd',
   experiments: {
     css: isWeb,
   },
-  output: isWeb ? output : outputLib,
-  target: 'web',
 });

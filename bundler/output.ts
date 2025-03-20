@@ -14,8 +14,11 @@ export const output = {
 export const outputLib = {
   path: path.resolve(__dirname, '../dist/lib'),
   filename: 'final.js',
-  library: 'MyLib',
-  libraryTarget: 'umd',
-  globalObject: 'this',
+  asyncChunks: false,
+  chunkFormat: 'module',
   clean: true,
+  library: {
+    name: 'MyLib',
+    type: 'umd',
+  },
 };

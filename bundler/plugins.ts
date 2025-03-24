@@ -1,13 +1,19 @@
-import {DefinePlugin, rspack} from '@rspack/core';
+import {
+  DefinePlugin,
+  rspack,
+} from '@rspack/core';
 import * as RefreshPlugin from '@rspack/plugin-react-refresh';
 
-import {codeInspectorPlugin} from 'code-inspector-plugin';
+import { codeInspectorPlugin } from 'code-inspector-plugin';
 
-import {defines, isDev, isWeb} from './constants';
+import {
+  defines,
+  isDev,
+} from './constants';
 import htmlPluginConfig from './htmlPluginConfig';
 
 const plugins = [
-  isWeb ? new rspack.HtmlRspackPlugin(htmlPluginConfig) : null,
+  new rspack.HtmlRspackPlugin(htmlPluginConfig),
   isDev ? new RefreshPlugin() : null,
   new DefinePlugin(defines),
   codeInspectorPlugin({

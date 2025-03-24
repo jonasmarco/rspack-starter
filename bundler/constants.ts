@@ -19,7 +19,7 @@ export const isWeb = appConfig.type === 'web';
 export const isDev = appConfig.node === 'development';
 
 // Entry point
-export const entry = isWeb ? {main: './src/main.tsx'} : {main: './src/index.tsx'};
+export const entry = {main: './src/main.tsx'};
 
 // Environment
 export const isUat = appConfig.env === 'uat';

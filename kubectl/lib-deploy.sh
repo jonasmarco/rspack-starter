@@ -19,5 +19,5 @@ docker tag $image registry.digitalocean.com/fillet-dev/$image
 docker push registry.digitalocean.com/fillet-dev/$image
 
 kubectl apply -f "$DIR_PATH/lib-service.yaml"
-# kubectl delete -f "$DIR_PATH/lib-deployment.yaml"
+kubectl delete -f "$DIR_PATH/lib-deployment.yaml"
 kubectl apply -f "$DIR_PATH/lib-deployment.yaml"
